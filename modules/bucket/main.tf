@@ -54,3 +54,7 @@ output "bucket_arn" {
 output "bucket_from_arn" {
   value = provider::aws::arn_parse(aws_s3_bucket.this.arn).resource
 }
+
+output "bucket_tags" {
+value = aws_s3_bucket.this.tags
+}
