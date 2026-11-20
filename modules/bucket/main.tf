@@ -56,5 +56,5 @@ output "bucket_from_arn" {
 }
 
 output "bucket_tags" {
-value = aws_s3_bucket.this.tags
+  value = aws_s3_bucket.this.tags
 }
