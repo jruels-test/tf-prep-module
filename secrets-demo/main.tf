@@ -1,11 +1,15 @@
-# Starts leaky on purpose: sensitive hides the value on screen,
-# but the saved plan still contains it.
+# Fixed: ephemeral keeps the value out of plan and state.
 
 variable "db_password" {
   type      = string
-  sensitive = true
+  ephemeral = true
 }
 
 resource "terraform_data" "db" {
-  input = var.db_password
+  provisioner "local-exec" {
+    command = "echo \"password received\""
+    environment = {
+      DB_PASSWORD = var.db_password
+    }
+  }
 }
